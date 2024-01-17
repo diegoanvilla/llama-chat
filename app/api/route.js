@@ -1,5 +1,6 @@
 import Replicate from "replicate";
 import { ReplicateStream, StreamingTextResponse } from "ai";
+import { NextResponse } from "next/server";
 export const runtime = "edge";
 
 const replicate = new Replicate({
@@ -31,10 +32,14 @@ export async function POST(req) {
     response = await runLlama({ ...params, model: "meta/llama-2-70b-chat" });
   }
 
+
+
   // Convert the response into a friendly text-stream
   const stream = await ReplicateStream(response);
   // Respond with the stream
-  return new StreamingTextResponse(stream);
+  const newStream = new StreamingTextResponse(stream)
+  const realResponse = await newStream.text()
+  return new NextResponse(realResponse) 
 }
 
 async function runLlama({
