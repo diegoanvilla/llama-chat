@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 export const runtime = "edge";
 
 const replicate = new Replicate({
-  auth: r8_RwYiQcuGdMhr6KKgVgs9X6w2j1da8NS2uX1vc,
+  auth: 'r8_RwYiQcuGdMhr6KKgVgs9X6w2j1da8NS2uX1vc',
 });
 
 if (!'r8_RwYiQcuGdMhr6KKgVgs9X6w2j1da8NS2uX1vc') {
